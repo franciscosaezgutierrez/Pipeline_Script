@@ -20,6 +20,7 @@ pipeline {
                     }
                     steps {
 			 sleep 10   	
+			  bat 'Build.bat'   
                         echo "build on Parallel"
                     }
                     
@@ -30,6 +31,7 @@ pipeline {
                     }
                     steps {
 			    	sleep 10
+			    	bat 'Deploy.bat'   
 				echo "deploy on Parallel"
 			}
                 }
@@ -39,6 +41,7 @@ pipeline {
                     }
                     steps {
 			    	sleep 10
+			    	 bat 'Quality.bat'   
 				echo "quality on Parallel"
 			}
                 }
