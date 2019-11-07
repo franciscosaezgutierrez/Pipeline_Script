@@ -12,25 +12,34 @@ pipeline {
         }
 
 	
-        stage('Run Tests') {
+        stage('Run') {
             parallel {
-                stage('Test On Windows') {
+                stage('build') {
                    agent {
-                        label "moco"
+                        label "build"
                     }
                     steps {
 			 sleep 10   	
-                        echo "Task1 on Parallel"
+                        echo "build on Parallel"
                     }
                     
                 }
-                stage('Test On Master') {
+                stage('deploy') {
                     agent {
-                        label "win"
+                        label "deploy"
                     }
                     steps {
 			    	sleep 10
-				echo "Task2 on Parallel"
+				echo "deploy on Parallel"
+			}
+                }
+		stage('quality') {
+                    agent {
+                        label "quality"
+                    }
+                    steps {
+			    	sleep 10
+				echo "quality on Parallel"
 			}
                 }
             }
